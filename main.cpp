@@ -1,27 +1,35 @@
 #include <iostream>
 #include <fstream>
+#include <map>
+#include <list>
 using namespace std;
 
-int sum_ascii(string);
+int gen_hash_index(string);
 
 int main() {
+    map<int, list<string>> hash_table;
+
     ifstream fin("data.txt");
 
     string inp;
     int total = 0;
 
     while (getline(fin, inp)) {
-        total += sum_ascii(inp);
+        int index = gen_hash_index(inp);
+        hash_table[index].push_back(inp);
     }
-    cout << total << endl;
+    fin.close();
 
-    cout << "Correct? (Should output 0) " << total - 69893419 << endl;
+    for (auto &i : hash_table) {
+        cout << "Index: " << i.first << endl;
+        cout << "Codes"
+    }
 
 
     return 0;
 }
 
-int sum_ascii(string str) {
+int gen_hash_index(string str) {
     int total = 0;
     for (int i = 0; i < str.length(); i++) {
         total += (int) str[i];
