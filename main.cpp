@@ -1,21 +1,22 @@
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 int sum_ascii(string);
 
 int main() {
-    char a = 'a';
-    char b = 'b';
-    char c = 'c';
-    char d = 'd';
-    cout << (int) a << endl;
-    cout << (int) b << endl;
-    cout << (int) c << endl;
-    cout << (int) d << endl;
+    ifstream fin("data.txt");
 
-    cout << (int) a + (int) b + (int) c + (int) d << endl;
-    cout << sum_ascii("abcd");
-    
+    string inp;
+    int total = 0;
+
+    while (getline(fin, inp)) {
+        total += sum_ascii(inp);
+    }
+    cout << total << endl;
+
+    cout << "Correct? (Should output 0) " << total - 69893419 << endl;
+
 
     return 0;
 }
