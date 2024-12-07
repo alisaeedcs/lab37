@@ -20,11 +20,19 @@ int main() {
     }
     fin.close();
 
+    int n = 0;
     for (auto &i : hash_table) {
         cout << "Index: " << i.first << endl;
-        cout << "Codes"
+        cout << "\tCodes" << endl;
+        for (string &code : i.second) {
+            cout << "\t\t" << code << endl;
+        }
+        cout << endl;
+        n++;
+        if (n>=100) {
+            break;
+        }
     }
-
 
     return 0;
 }
