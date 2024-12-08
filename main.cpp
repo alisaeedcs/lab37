@@ -46,20 +46,38 @@ int main() {
         }
         if (choice == 2) {
             cout << "Enter the key: ";
-            int key;
-            cin >> key;
-            cin.ignore();
-            cout << endl;
+            string key;
+            getline(cin, key);
 
-            if (hash_table[key].size() > 0) {
-                cout << "Key: " << key << endl;
-                for (const string &code : hash_table[key]) {
-                    cout << "\t" << code << endl;
+            cout << endl;
+            int hash_ind = gen_hash_index(key);
+            bool exists = false;
+
+            if (hash_table[hash_ind].size() > 0) {
+                for (string &code : hash_table[hash_ind]) {
+                    if (code == key) {
+                        exists = true;
+                        cout << "Key " << key << " found at hash index " << hash_ind << endl;
+                        break;
+                    }
                 }
             }
-            else {
+            if (!exists) {
                 cout << "Key not found\n";
             }
+            cout << endl;
+        }
+        if (choice == 3) { 
+            cout << "Enter key to be added: ";
+            string new_key;
+            getline(cin, new_key);
+
+            int new_key_ind = gen_hash_index(new_key);
+
+            cout << endl;
+
+            hash_table[new_key_ind].push_back(new_key);
+
             cout << endl;
         }
         if (choice == 6) {
