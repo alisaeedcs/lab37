@@ -39,10 +39,28 @@ int main() {
                 }
                 cout << endl;
                 n++;
-                if (n>=100) {
+                if (n>=5) {
                     break;
                 }
             }
+        }
+        if (choice == 2) {
+            cout << "Enter the key: ";
+            int key;
+            cin >> key;
+            cin.ignore();
+            cout << endl;
+
+            if (hash_table[key].size() > 0) {
+                cout << "Key: " << key << endl;
+                for (const string &code : hash_table[key]) {
+                    cout << "\t" << code << endl;
+                }
+            }
+            else {
+                cout << "Key not found\n";
+            }
+            cout << endl;
         }
         if (choice == 6) {
             break;
