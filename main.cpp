@@ -118,7 +118,7 @@ int main() {
 
             cout << endl;
 
-             bool modified = false;
+            bool modified = false;
 
             if (hash_table[mod_key_ind].size() > 0) {
                 for (string &code : hash_table[mod_key_ind]) {
@@ -128,7 +128,6 @@ int main() {
                         getline(cin, new_mod_key);
                         int new_mod_key_ind = gen_hash_index(new_mod_key);
 
-                        hash_table[mod_key_ind].remove(mod_key);
                         if (new_mod_key_ind == mod_key_ind) {
                             hash_table[mod_key_ind].push_back(new_mod_key);
                             cout << "Key " << mod_key << ", replaced with " << new_mod_key << " (Same Hash Index)" << endl; 
