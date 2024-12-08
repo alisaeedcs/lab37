@@ -5,6 +5,7 @@
 using namespace std;
 
 int gen_hash_index(string);
+void menu();
 
 int main() {
     map<int, list<string>> hash_table;
@@ -20,19 +21,35 @@ int main() {
     }
     fin.close();
 
-    int n = 0;
-    for (auto &i : hash_table) {
-        cout << "Index: " << i.first << endl;
-        cout << "\tCodes" << endl;
-        for (string &code : i.second) {
-            cout << "\t\t" << code << endl;
+    int choice = 0;
+
+    while (choice != 6) {
+        menu();
+        cout << "Choice: ";
+        cin >> choice;
+        cin.ignore();
+
+        if (choice == 1) {
+            int n = 0;
+            for (auto &i : hash_table) {
+                cout << "Index: " << i.first << endl;
+                cout << "\tCodes" << endl;
+                for (string &code : i.second) {
+                    cout << "\t\t" << code << endl;
+                }
+                cout << endl;
+                n++;
+                if (n>=100) {
+                    break;
+                }
+            }
         }
-        cout << endl;
-        n++;
-        if (n>=100) {
+        if (choice == 6) {
             break;
         }
     }
+
+    
 
     return 0;
 }
@@ -51,3 +68,12 @@ These targets are present in the dataset and can be used for testing:
 666D109AA22E
 E1D2665B21EA
 */
+
+void menu() {
+    cout << "1. Output first 100 entries" << endl;
+    cout << "2. Search for key" << endl;
+    cout << "3. Add a key\n";
+    cout << "4. Remove a key\n";
+    cout << "5. Modify a key\n";
+    cout << "6. Exit\n";
+}
