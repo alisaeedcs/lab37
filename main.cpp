@@ -1,3 +1,6 @@
+//comsc-210 | ali saeed | lab38
+//ide used: vs code
+
 #include <iostream>
 #include <fstream>
 #include <map>
@@ -39,7 +42,7 @@ int main() {
                 }
                 cout << endl;
                 n++;
-                if (n>=5) {
+                if (n>=100) {
                     break;
                 }
             }
@@ -110,7 +113,7 @@ int main() {
             cout << endl;
         }
         if (choice == 5) {
-            cout << "Enter key to be removed: ";
+            cout << "Enter key to be modified: ";
             string mod_key;
             getline(cin, mod_key);
 
@@ -126,6 +129,9 @@ int main() {
                         cout << "What do you want to change the key to? ";
                         string new_mod_key;
                         getline(cin, new_mod_key);
+                        
+                        hash_table[mod_key_ind].remove(mod_key);
+
                         int new_mod_key_ind = gen_hash_index(new_mod_key);
 
                         if (new_mod_key_ind == mod_key_ind) {
