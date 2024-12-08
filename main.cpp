@@ -78,7 +78,38 @@ int main() {
 
             hash_table[new_key_ind].push_back(new_key);
 
+            cout << new_key << " Added at Index " << new_key_ind << ", Previously containing " << hash_table[new_key_ind].size() - 1 << " elements\n";
+
             cout << endl;
+        }
+        if (choice == 4) {
+            cout << "Enter key to be removed: ";
+            string del_key;
+            getline(cin, del_key);
+
+            int del_key_ind = gen_hash_index(del_key);
+
+            cout << endl;
+
+             bool deleted = false;
+
+            if (hash_table[del_key_ind].size() > 0) {
+                for (string &code : hash_table[del_key_ind]) {
+                    if (code == del_key) {
+                        hash_table[del_key_ind].remove(del_key);
+                        deleted = true;
+                        cout << "Key " << del_key << " removed from index " << del_key_ind << endl;
+                        break;
+                    }
+                }
+            }
+            if (!deleted) {
+                cout << "Key not removed (Not found)\n";
+            }
+
+            cout << endl;
+
+
         }
         if (choice == 6) {
             break;
